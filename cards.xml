@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cards>
+    <!-- RED CARDS -->
+
+    <!-- Бастион -->
+    <card title="Бастион" description="+12 к стене" resource="MINE" price="13">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="12" />
+    </card>
+
+    <!-- Благодатная почва -->
+    <card title="Благодатная почва" description="+1 к стене, играем снова" resource="MINE" price="1">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="1" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Большая жила -->
+    <card title="Большая жила" description="Если шахта меньше чем у врага, то шахта +2, иначе +1" resource="MINE" price="4">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="INCREASE" value="2">
+            <condition firstResource="MINE" firstResourceSide="SELF" secondResource="MINE" secondResourceSide="OPPONENT" conditionValue="LESS_THAN" />
+        </impact>
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="INCREASE" value="1">
+            <condition firstResource="MINE" firstResourceSide="SELF" secondResource="MINE" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Большая стена -->
+    <card title="Большая стена" description="+4 к стене" resource="MINE" price="3">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="4" />
+    </card>
+
+    <!-- Бракованная руда -->
+    <card title="Бракованная руда" description="Все игроки теряют по 8 руды" resource="MINE" price="0">
+        <impact type="RESOURCE" resource="ORE" side="SELF" action="DECREASE" value="8" />
+        <impact type="RESOURCE" resource="ORE" side="OPPONENT" action="DECREASE" value="8" />
+    </card>
+
+    <!-- Великая стена -->
+    <card title="Великая стена" description="+8 к стене" resource="MINE" price="8">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="8" />
+    </card>
+
+    <!-- Величайшая стена -->
+    <card title="Величайшая стена" description="+15 к стене" resource="MINE" price="16">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="15" />
+    </card>
+
+    <!-- Галереи -->
+    <card title="Галереи" description="+5 к стене, +1 казарма" resource="MINE" price="9">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="5" />
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Гномы-шахтёры -->
+    <card title="Гномы-шахтёры" description="+4 к стене, +1 шахта" resource="MINE" price="7">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="4" />
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Грунтовые воды -->
+    <card title="Грунтовые воды" description="Игрок с меньшей стеной теряет 1 казарму и получает 2 урона к башне" resource="MINE" price="6">
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="DECREASE" value="1">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="LESS_THAN" />
+        </impact>
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="DECREASE" value="2">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="LESS_THAN" />
+        </impact>
+        <impact type="RESOURCE" resource="BARRACKS" side="OPPONENT" action="DECREASE" value="1">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN" />
+        </impact>
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN" />
+        </impact>
+    </card>
+
+    <!-- Землетрясение -->
+    <card title="Землетрясение" description="-1 шахта всех игроков" resource="MINE" price="0">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="DECREASE" value="1" />
+        <impact type="RESOURCE" resource="MINE" side="OPPONENT" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Казармы -->
+    <card title="Казармы" description="+6 отрядов, +6 к стене. Если казарма меньше вражеской, то +1 казарма" resource="MINE" price="10">
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="INCREASE" value="6" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="6" />
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="INCREASE" value="1">
+            <condition firstResource="BARRACKS" firstResourceSide="SELF" secondResource="BARRACKS" secondResourceSide="OPPONENT" conditionValue="LESS_THAN" />
+        </impact>
+    </card>
+
+    <!-- Кража технологий -->
+    <card title="Кража технологий" description="Если шахта меньше шахты врага, то шахта становится равной вражеской" resource="MINE" price="5">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="MAKE_EQUAL_TO_OPPONENT">
+            <condition firstResource="MINE" firstResourceSide="SELF" secondResource="MINE" secondResourceSide="OPPONENT" conditionValue="LESS_THAN" />
+        </impact>
+    </card>
+
+    <!-- Магическая гора -->
+    <card title="Магическая гора" description="+7 к стене, +7 маны" resource="MINE" price="9">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="7" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="7" />
+    </card>
+
+    <!-- Новое оборудование -->
+    <card title="Новое оборудование" description="+2 к шахте" resource="MINE" price="6">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="INCREASE" value="2" />
+    </card>
+
+    <!-- Новшества -->
+    <card title="Новшества" description="+1 к шахте всех игроков, вы получаете 4 маны" resource="MINE" price="2">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="MINE" side="OPPONENT" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="4" />
+    </card>
+
+    <!-- Новые успехи -->
+    <card title="Новые успехи" description="+8 к стене, +5 к башне" resource="MINE" price="15">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="8" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="5" />
+    </card>
+
+    <!-- Обвал -->
+    <card title="Обвал" description="-1 шахта врага" resource="MINE" price="4">
+        <impact type="RESOURCE" resource="MINE" side="OPPONENT" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Обвал рудника -->
+    <card title="Обвал" description="-1 шахта, +10 к стене, вы получаете 5 маны" resource="MINE" price="0">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="DECREASE" value="1" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="10" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="5" />
+    </card>
+
+    <!-- Обычная стена -->
+    <card title="Обычная стена" description="+3 к стене" resource="MINE" price="2">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Поющий уголь -->
+    <card title="Поющий уголь" description="+6 к стене, +3 к башне" resource="MINE" price="11">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="6" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Рабский труд -->
+    <card title="Рабский труд" description="+9 к стене, вы теряете 5 отрядов" resource="MINE" price="7">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="9" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="DECREASE" value="5" />
+    </card>
+
+    <!-- Сад камней -->
+    <card title="Сад камней" description="+1 к стене, +1 к башне, +2 отряда" resource="MINE" price="1">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="INCREASE" value="2" />
+    </card>
+
+    <!-- Сверхурочные -->
+    <card title="Сверхурочные" description="+5 к стене, вы теряте 6 маны" resource="MINE" price="2">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="5" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Сдвиг -->
+    <card title="Сдвиг" description="Ваша и вражеская стена меняются местами" resource="MINE" price="17">
+        <impact type="RESOURCE" resource="WALL" side="BOTH" action="SWAP" value="0" />
+    </card>
+
+    <!-- Секретная пещера -->
+    <card title="Секретная пещера" description="+1 монастырь, играем снова" resource="MINE" price="8">
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="INCREASE" value="1" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Сердце дракона -->
+    <card title="Сердце дракона" description="+20 к стене, +8 к башне" resource="MINE" price="24">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="20" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="8" />
+    </card>
+
+    <!-- Скаломёт -->
+    <card title="Скаломёт" description="+6 к стене, 10 единиц урона врагу" resource="MINE" price="18">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="6" />
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="10" />
+    </card>
+
+    <!-- Счастливая монетка -->
+    <card title="Счастливая монетка" description="+2 руды, +2 маны, играем снова" resource="MINE" price="0">
+        <impact type="RESOURCE" resource="ORE" side="SELF" action="INCREASE" value="2" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="2" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Толчки -->
+    <card title="Толчки" description="Все стены получают по 5 повреждений, играем снова" resource="MINE" price="7">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="WALL" side="OPPONENT" action="DECREASE" value="5" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Укрепления -->
+    <card title="Укрепления" description="+7 к стене, 6 урона врагу" resource="MINE" price="14">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="7" />
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Усиленная стена -->
+    <card title="Усиленная стена" description="+6 к стене" resource="MINE" price="5">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="6" />
+    </card>
+
+    <!-- Фундамент -->
+    <card title="Фундамент" description="Если стена = 0, то +5 к стене, иначе +3 к стене" resource="MINE" price="3">
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="5">
+            <condition firstResource="WALL" firstResourceSide="SELF" value="0" conditionValue="EQUAL" />
+        </impact>
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="3">
+            <condition firstResource="WALL" firstResourceSide="SELF" value="0" conditionValue="GREATER_THAN" />
+        </impact>
+    </card>
+
+    <!-- Шахтёры -->
+    <card title="Шахтёры" description="+1 шахта" resource="MINE" price="3">
+        <impact type="RESOURCE" resource="MINE" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- BLUE CARDS -->
+
+    <!-- Алмаз -->
+    <card title="Алмаз" description="+15 к башне" resource="MONASTERY" price="16">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="15" />
+    </card>
+
+    <!-- Аметист -->
+    <card title="Аметист" description="+3 к башне" resource="MONASTERY" price="2">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Бижутерия -->
+    <card title="Бижутерия" description="Если башня меньше вражеской, то +2 к башне, иначе +1" resource="MONASTERY" price="0">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="2">
+            <condition firstResource="TOWER" firstResourceSide="SELF" secondResource="TOWER" secondResourceSide="OPPONENT" conditionValue="LESS_THAN" />
+        </impact>
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="1">
+            <condition firstResource="TOWER" firstResourceSide="SELF" secondResource="TOWER" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Взрыв силы -->
+    <card title="Взрыв силы" description="5 урона собственной башне, +2 монастырь" resource="MONASTERY" price="3">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="INCREASE" value="2" />
+    </card>
+
+    <!-- Вступление -->
+    <card title="Вступление" description="+4 к башне, вы теряете 3 отряда, 2 урона башне врага" resource="MONASTERY" price="5">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="4" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="DECREASE" value="3" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2" />
+    </card>
+
+    <!-- Гармония -->
+    <card title="Гармония" description="+1 монастырь, +3 к башне, +3 к стене" resource="MONASTERY" price="7">
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="3" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Глаз дракона -->
+    <card title="Глаз дракона" description="+20 к башне" resource="MONASTERY" price="21">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="20" />
+    </card>
+
+    <!-- Дробление -->
+    <card title="Дробление" description="-1 монастырь, 9 урона башне врага" resource="MONASTERY" price="8">
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="DECREASE" value="1" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="9" />
+    </card>
+
+    <!-- Дымчатый кварц -->
+    <card title="Дымчатый кварц" description="1 урона башне врага, играем снова" resource="MONASTERY" price="2">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="1" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Жемчуг мудрости -->
+    <card title="Жемчуг мудрости" description="+5 к башне, +1 монастырь" resource="MONASTERY" price="9">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="5" />
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Затмение -->
+    <card title="Затмение" description="+2 к башне, 2 ед. урона башне врага" resource="MONASTERY" price="4">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="2" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2" />
+    </card>
+
+    <!-- Кварц -->
+    <card title="Кварц" description="+1 к башне, играем снова" resource="MONASTERY" price="1">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="1" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Кристальный щит -->
+    <card title="Кристальный щит" description="+8 к башне, +3 к стене" resource="MONASTERY" price="12">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="8" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Копье -->
+    <card title="Копье" description="5 урона башне врага" resource="MONASTERY" price="4">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="5" />
+    </card>
+
+    <!-- Матрица -->
+    <card title="Матрица" description="+1 монастырь, +3 к башне, +1 к башне врага" resource="MONASTERY" price="6">
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="3" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Медитация -->
+    <card title="Медитация" description="+13 к башне, +6 отрядов, +6 руды" resource="MONASTERY" price="18">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="13" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="INCREASE" value="6" />
+        <impact type="RESOURCE" resource="ORE" side="SELF" action="INCREASE" value="6" />
+    </card>
+
+    <!-- Молния -->
+    <card title="Молния" description="Если башня больше стены врага, то 8 урона башне врага, иначе 8 урона всем" resource="MONASTERY" price="11">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="8">
+            <condition firstResource="TOWER" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="SELF" action="DECREASE" value="8">
+            <condition firstResource="TOWER" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="LESS_THAN_OR_EQUAL" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="8">
+            <condition firstResource="TOWER" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="LESS_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Монастырь -->
+    <card title="Монастырь" description="+10 к башне, +5 к стене, вы получаете 5 отрядов" resource="MONASTERY" price="15">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="10" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="5" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="INCREASE" value="5" />
+    </card>
+
+    <!-- Мягкий камень -->
+    <card title="Мягкий камень" description="+5 к башне, враг теряет 6 руды" resource="MONASTERY" price="7">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="5" />
+        <impact type="RESOURCE" resource="ORE" side="OPPONENT" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Огненный рубин -->
+    <card title="Огненный рубин" description="+6 к башне, 4 урона башне врага" resource="MONASTERY" price="13">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="6" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="4" />
+    </card>
+
+    <!-- Отвердение -->
+    <card title="Отвердение" description="+11 к башне, -6 к стене" resource="MONASTERY" price="8">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="11" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Паритет -->
+    <card title="Паритет" description="Монастырь всех становится равным монастырю сильнейшего" resource="MONASTERY" price="7">
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="MAKE_EQUAL_TO_GREATER" value="0"/>
+        <impact type="RESOURCE" resource="MONASTERY" side="OPPONENT" action="MAKE_EQUAL_TO_GREATER" value="0" />
+    </card>
+
+    <!-- Помощь в работе -->
+    <card title="Помощь в работе" description="+7 к башне, вы теряете 10 руды" resource="MONASTERY" price="4">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="7" />
+        <impact type="RESOURCE" resource="ORE" side="SELF" action="DECREASE" value="10" />
+    </card>
+
+    <!-- Призма -->
+    <card title="Призма" description="Сдать эту карту, сбросить карту, играем снова" resource="MONASTERY" price="2">
+        <feature name="DISCARD_AND_PLAY_AGAIN" />
+    </card>
+
+    <!-- Радуга -->
+    <card title="Радуга" description="+1 к башням всех, вы получаете 3 маны" resource="MONASTERY" price="0">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Раздоры -->
+    <card title="Раздоры" description="7 урона всем башням, -1 монастырь всех игроков" resource="MONASTERY" price="5">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="DECREASE" value="7" />
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="7" />
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="DECREASE" value="1" />
+        <impact type="RESOURCE" resource="MONASTERY" side="OPPONENT" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Рубин -->
+    <card title="Рубин" description="+5 к башне" resource="MONASTERY" price="3">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="5" />
+    </card>
+
+    <!-- Рудная жила -->
+    <card title="Рудная жила" description="+8 к башне" resource="MONASTERY" price="5">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="8" />
+    </card>
+
+    <!-- Сапфир -->
+    <card title="Сапфир" description="+11 к башне" resource="MONASTERY" price="10">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="11" />
+    </card>
+
+    <!-- Сияющий камень -->
+    <card title="Сияющий камень" description="+12 к башне, 6 урона врагу" resource="MONASTERY" price="17">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="12" />
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Ткачи заклинаний -->
+    <card title="Ткачи заклинаний" description="+1 монастырь" resource="MONASTERY" price="3">
+        <impact type="RESOURCE" resource="MONASTERY" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Трещина -->
+    <card title="Трещина" description="3 урона башне врага" resource="MONASTERY" price="2">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="3" />
+    </card>
+
+    <!-- Эмельральд -->
+    <card title="Эмельральд" description="+8 к башне" resource="MONASTERY" price="6">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="8" />
+    </card>
+
+    <!-- Эмпатия -->
+    <card title="Эмпатия" description="+8 к башне, +1 казарма" resource="MONASTERY" price="14">
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="8" />
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- GREEN CARDS -->
+
+    <!-- Армия гоблинов -->
+    <card title="Армия гоблинов" description="6 единиц урона. Вы получаете 3 единицы урона" resource="BARRACKS" price="3">
+        <impact type="DAMAGE" resource="TOWER" side="SELF" action="DECREASE" value="3" />
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Берсерк -->
+    <card title="Берсерк" description="8 урона, 3 урона вашей башне" resource="BARRACKS" price="4">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="8" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="DECREASE" value="3" />
+    </card>
+
+    <!-- Бешеная овца -->
+    <card title="Бешеная овца" description="6 урона, враг теряет 3 отряда" resource="BARRACKS" price="6">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6" />
+        <impact type="RESOURCE" resource="SQUADS" side="OPPONENT" action="DECREASE" value="3" />
+    </card>
+
+    <!-- Вампир -->
+    <card title="Вампир" description="10 урона, враг теряет 5 отрядов, -1 к его казарме" resource="BARRACKS" price="17">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="10" />
+        <impact type="RESOURCE" resource="SQUADS" side="OPPONENT" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="BARRACKS" side="OPPONENT" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Воитель -->
+    <card title="Воитель" description="13 урона, вы теряете 3 маны" resource="BARRACKS" price="13">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="13" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="DECREASE" value="3" />
+    </card>
+
+    <!-- Вор -->
+    <card title="Вор" description="Враг теряет 10 маны, 6 руды. Вы получаете половину от этого." resource="BARRACKS" price="12">
+        <impact type="RESOURCE" resource="MANA" side="OPPONENT" action="DECREASE" value="10" />
+        <impact type="RESOURCE" resource="ORE" side="OPPONENT" action="DECREASE" value="6" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="5" />
+        <impact type="RESOURCE" resource="ORE" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Всадник на пегасе -->
+    <card title="Всадник на пегасе" description="12 урона башне врага" resource="BARRACKS" price="18">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="12" />
+    </card>
+
+    <!-- Гномы -->
+    <card title="Гномы" description="4 урона, +3 к стене" resource="BARRACKS" price="5">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="4" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Гоблины -->
+    <card title="Гоблины" description="4 единицы урона. Вы теряете 3 маны" resource="BARRACKS" price="1">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="4" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="DECREASE" value="3" />
+    </card>
+
+    <!-- Гоблины-лучники -->
+    <card title="Гоблины-лучники" description="3 урона башне врага. Вы получаете 1 ед. урона" resource="BARRACKS" price="4">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="3" />
+        <impact type="DAMAGE" resource="TOWER" side="SELF" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Гремлин в башне -->
+    <card title="Гремлин в башне" description="2 урона, +4 к стене, +2 к башне" resource="BARRACKS" price="8">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="4" />
+        <impact type="RESOURCE" resource="TOWER" side="SELF" action="INCREASE" value="2" />
+    </card>
+
+    <!-- Дракон -->
+    <card title="Дракон" description="20 урона, враг теряет 10 маны, -1 к его казарме" resource="BARRACKS" price="25">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="20" />
+        <impact type="RESOURCE" resource="MANA" side="OPPONENT" action="DECREASE" value="10" />
+        <impact type="RESOURCE" resource="BARRACKS" side="OPPONENT" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Единорог -->
+    <card title="Единорог" description="Если монастырь больше, чем у врага, то 12 урона, иначе 8 урона" resource="BARRACKS" price="9">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="12">
+            <condition firstResource="MONASTERY" firstResourceSide="SELF" secondResource="MONASTERY" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="8">
+            <condition firstResource="MONASTERY" firstResourceSide="SELF" secondResource="MONASTERY" secondResourceSide="OPPONENT" conditionValue="LESS_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Едкое облако -->
+    <card title="Едкое облако" description="Если стена врага больше 10, то 10 урона, иначе 7 урона" resource="BARRACKS" price="11">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="10">
+            <condition firstResource="WALL" firstResourceSide="OPPONENT" value="10" conditionValue="GREATER_THAN" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="7">
+            <condition firstResource="WALL" firstResourceSide="OPPONENT" value="10" conditionValue="LESS_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Жучара -->
+    <card title="Жучара" description="Если стена у врага =0, то 10 урона, иначе 6 урона" resource="BARRACKS" price="8">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="10">
+            <condition firstResource="WALL" firstResourceSide="OPPONENT" value="0" conditionValue="EQUAL" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="7">
+            <condition firstResource="WALL" firstResourceSide="OPPONENT" value="0" conditionValue="GREATER_THAN" />
+        </impact>
+    </card>
+
+    <!-- Каменный гигант -->
+    <card title="Каменный гигант" description="10 урона, +4 к стене" resource="BARRACKS" price="15">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="10" />
+        <impact type="RESOURCE" resource="WALL" side="SELF" action="INCREASE" value="4" />
+    </card>
+
+    <!-- Камнееды -->
+    <card title="Камнееды" description="8 урона, -1 шахта врага" resource="BARRACKS" price="11">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="8" />
+        <impact type="RESOURCE" resource="MINE" side="OPPONENT" action="DECREASE" value="1" />
+    </card>
+
+    <!-- Карлик -->
+    <card title="Карлик" description="3 урона, +1 мана" resource="BARRACKS" price="2">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="3" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Копьеносец -->
+    <card title="Копьеносец" description="Если стена больше, чем у врага, то 3 урона, иначе 2 урона" resource="BARRACKS" price="2">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="3">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="LESS_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Коровье бешенство -->
+    <card title="Коровье бешенство" description="Все игроки теряют по 8 отрядов" resource="BARRACKS" price="0">
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="DECREASE" value="8" />
+        <impact type="RESOURCE" resource="SQUADS" side="OPPONENT" action="DECREASE" value="8" />
+    </card>
+
+    <!-- Крушитель -->
+    <card title="Крушитель" description="6 урона" resource="BARRACKS" price="5">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Маленькие змейки -->
+    <card title="Маленькие змейки" description="4 урона башне врага" resource="BARRACKS" price="6">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="4" />
+    </card>
+
+    <!-- Минотавр -->
+    <card title="Минотавр" description="+1 казарма" resource="BARRACKS" price="3">
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="INCREASE" value="1" />
+    </card>
+
+    <!-- Оборотень -->
+    <card title="Оборотень" description="9 урона" resource="BARRACKS" price="9">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="9" />
+    </card>
+
+    <!-- Огр -->
+    <card title="Огр" description="7 урона" resource="BARRACKS" price="6">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="7" />
+    </card>
+
+    <!-- Орк -->
+    <card title="Орк" description="5 урона" resource="BARRACKS" price="3">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="5" />
+    </card>
+
+    <!-- Полнолуние -->
+    <card title="Полнолуние" description="+1 казарма всем игрокам, вы получаете 3 отряда" resource="BARRACKS" price="0">
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="BARRACKS" side="OPPONENT" action="INCREASE" value="1" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="INCREASE" value="3" />
+    </card>
+
+    <!-- Призрачная фея -->
+    <card title="Призрачная фея" description="2 урона башне врага, играем снова" resource="BARRACKS" price="6">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Суккубы -->
+    <card title="Суккубы" description="5 урона башне врага, враг теряет 6 отрядов" resource="BARRACKS" price="14">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="SQUADS" side="OPPONENT" action="DECREASE" value="6" />
+    </card>
+
+    <!-- Тролль-наставник -->
+    <card title="Тролль-наставник" description="+2 к казарме" resource="BARRACKS" price="7">
+        <impact type="RESOURCE" resource="BARRACKS" side="SELF" action="INCREASE" value="2" />
+    </card>
+
+    <!-- Фея -->
+    <card title="Фея" description="2 единицы урона, играем снова" resource="BARRACKS" price="1">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="2" />
+        <feature name="PLAY_AGAIN" />
+    </card>
+
+    <!-- Черт -->
+    <card title="Черт" description="6 урона, все игроки теряют по 5 руды, маны, отрядов" resource="BARRACKS" price="5">
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6" />
+        <impact type="RESOURCE" resource="ORE" side="SELF" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="MANA" side="SELF" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="SQUADS" side="SELF" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="ORE" side="OPPONENT" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="MANA" side="OPPONENT" action="DECREASE" value="5" />
+        <impact type="RESOURCE" resource="SQUADS" side="OPPONENT" action="DECREASE" value="5" />
+    </card>
+
+    <!-- Эльфы-лучники -->
+    <card title="Эльфы-лучники" description="Если стена больше, чем у врага, то 6 урона башне врага, иначе 6 урона" resource="BARRACKS" price="10">
+        <impact type="RESOURCE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="GREATER_THAN" />
+        </impact>
+        <impact type="DAMAGE" resource="TOWER" side="OPPONENT" action="DECREASE" value="6">
+            <condition firstResource="WALL" firstResourceSide="SELF" secondResource="WALL" secondResourceSide="OPPONENT" conditionValue="LESS_THAN_OR_EQUAL" />
+        </impact>
+    </card>
+
+    <!-- Эльфы-скауты -->
+    <card title="Эльфы-скауты" description="Сдать эту карту, сбросить карту, играем снова" resource="BARRACKS" price="2">
+        <feature name="DISCARD_AND_PLAY_AGAIN" />
+    </card>
+</cards>
